@@ -7,10 +7,10 @@
     <body> 
     <div ng-controller="mainController">
 
-	   	<input ng-model="temp" />
-	   	<button type="text">click me</button>
+	   	<input ng-model="validWord" />
+	   	<button ng-click="findAnagrams()">click me</button>
     	<br />		
-	   	{{temp}}
+	   	{{anagram}}
     </div> 
     <body />
     <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
