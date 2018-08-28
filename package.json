@@ -1,0 +1,22 @@
+{
+  "name": "frc-coding-challenge",
+  "version": "1.0.0",
+  "description": "coding challenge for company",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobdaball/frc-coding-challenge.git"
+  },
+  "author": "Alexander Mire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobdaball/frc-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/bobdaball/frc-coding-challenge#readme",
+  "dependencies": {
+    "angular": "^1.7.3"
+  }
+}
