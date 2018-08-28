@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bobdaball/frc-coding-challenge#readme",
   "dependencies": {
-    "angular": "^1.7.3"
+    "angular": "^1.7.3",
+    "cmu-pronouncing-dictionary": "^1.0.3"
   }
 }

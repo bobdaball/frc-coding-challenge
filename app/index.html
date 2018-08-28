@@ -4,7 +4,15 @@
         <meta charset="utf-8">
         <title>Angular Example</title>
     </head>
-    <body ng-controller="mainController" />
+    <body> 
+    <div ng-controller="mainController">
+
+	   	<input ng-model="temp" />
+	   	<button type="text">click me</button>
+    	<br />		
+	   	{{temp}}
+    </div> 
+    <body />
     <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
-    <script type="text/javascript" src="./components/app.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
 </html>
