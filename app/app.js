@@ -5,9 +5,11 @@ angular.module("main").controller("mainController", ($scope) => {
 	$scope.validWord = "";
 	$scope.anagrams = new Set();
 	$scope.anagram = "";
-	//previous word is necessary to see if word has changed.
-	$scope.previousWord = "";
 
+	$scope.$watch('validWord', (newValue, oldValue) => {
+		$scope.findAnagrams();
+	})
+	//previous word is necessary to see if word has changed.
 
 	// $scope.checkValidity = (word) => {
 	// 	let bool = wordChecker[word];
