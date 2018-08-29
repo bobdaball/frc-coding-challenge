@@ -8,33 +8,38 @@ mainCtrl.controller("mainController", ($scope) => {
 	$scope.wordStock = new Set();
 	$scope.numPerm = 0;
 	$scope.tableView = false;
-	$scope.resultKeepers = new Set();
+	$scope.resultKeepers = Array(10).fill(false);
+//keep track of resultKeepStatus
+//if false,  
 
 	$scope.$watch('validWord', (newValue, oldValue) => {
 		//check if total number of unique permutations are greater than 10
 		// if so, use findAnagrmas();
 		// console.log($scope.wordStock.size);
-		// console.log($scope.resultKeepers, 'scope resultKeepers');
 		$scope.validWord === '' ? $scope.tableView = false : $scope.tableView = true;
 		$scope.fillTable();	
 		$scope.anagram = $scope.shuffleString($scope.validWord);
 	})
 
 	$scope.init = () => {
-		for (let i = 0; i < 10; i++) {
-			$scope.resultKeepers.add(i);
-		}
+		$scope.resetResultKeepers();
 	}
 
 	$scope.resetResultKeepers = () => {
-
+		for (let i = 0; i < 10; i++) {
+			$scope.resultKeepers[i] = false;
+		}
 	}
 
+	$scope.toggleCheck = (num) => {
+		console.log($scope.resultKeepers, 'resultkeepers');
+	}
 	$scope.fillTable = () => {
 		$scope.numPerm = $scope.countAllUniquePermutations($scope.validWord);
-	
+		$scope.wordStock = new Set();
+
+
 		if ($scope.numPerm > 10) {
-			$scope.wordStock = new Set();
 			while($scope.wordStock.size < 10) {
 				let gibberish = $scope.shuffleString($scope.validWord);
 				$scope.wordStock.add(gibberish);
@@ -42,7 +47,6 @@ mainCtrl.controller("mainController", ($scope) => {
 			$scope.results = [...$scope.wordStock];
 			console.log($scope.wordStock);
 		} else if ($scope.numPerm <= 10 && $scope.numPerm > 0) {
-			$scope.wordStock = new Set();
 			while($scope.wordStock.size < $scope.numPerm) {
 				let gibberish = $scope.shuffleString($scope.validWord);
 				$scope.wordStock.add(gibberish);
@@ -107,5 +111,3 @@ mainCtrl.controller("mainController", ($scope) => {
 		return Math.floor( (Math.random() * (max - min)) + min);
 	}
 });
-
-//keep track of number of permutations

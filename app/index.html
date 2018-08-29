@@ -19,8 +19,9 @@
 					</tr>
 
 					<tr ng-repeat = "x in results">
-						<td><input type="checkbox"/></td>
+						<td><input type="checkbox" ng-model = "resultKeepers[$index]" ng-change="toggleCheck($index)"/></td>
 						<td>{{x}}</td>
+						<td>{{$index}}</td>
 					</tr>
 				</table>
 			</div>
