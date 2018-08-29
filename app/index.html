@@ -11,18 +11,19 @@
 	   	<button ng-click="findAnagrams()">click me</button>
     	<br />		
 	   	{{anagram}}
+	   	<div ng-show="tableView">
+				<table>
+					<tr>
+						<th>keep</th>
+						<th>Anagram</th>
+					</tr>
 
-			<table>
-				<tr>
-					<th>keep</th>
-					<th>Anagram</th>
-				</tr>
-
-				<tr ng-repeat = "x in results">
-					<td><input type="checkbox"/></td>
-					<td>{{x}}</td>
-				</tr>
-			</table>
+					<tr ng-repeat = "x in results">
+						<td><input type="checkbox"/></td>
+						<td>{{x}}</td>
+					</tr>
+				</table>
+			</div>
     </div>
 
     <br />
@@ -46,5 +47,5 @@
     <body />
     <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="./app.js"></script>
-    <script type="text/javascript" src="./components/anagramTable/anaTableController.js"></script>
+    <!-- <script type="text/javascript" src="./components/anagramTable/anaTableController.js"></script> -->
 </html>

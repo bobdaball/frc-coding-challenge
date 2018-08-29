@@ -7,11 +7,13 @@ mainCtrl.controller("mainController", ($scope) => {
 	$scope.results = [];
 	$scope.wordStock = new Set();
 	$scope.numPerm = 0;
+	$scope.tableView = false;
 
 	$scope.$watch('validWord', (newValue, oldValue) => {
 		//check if total number of unique permutations are greater than 10
 		// if so, use findAnagrmas();
 		// console.log($scope.wordStock.size);
+		$scope.validWord === '' ? $scope.tableView = false : $scope.tableView = true;
 		$scope.fillTable();	
 		$scope.anagram = $scope.shuffleString($scope.validWord);
 	})
