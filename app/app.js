@@ -1,7 +1,7 @@
-angular.module("App",['main']);
-angular.module("main", []);
+var mainCtrl = angular.module("App",[]);
 
-angular.module("main").controller("mainController", ($scope) => {
+
+mainCtrl.controller("mainController", ($scope) => {
 	$scope.validWord = "";
 	$scope.anagrams = new Set();
 	$scope.anagram = "";
