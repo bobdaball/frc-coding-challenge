@@ -11,13 +11,24 @@
 	   	<button ng-click="findAnagrams()">click me</button>
     	<br />		
 	   	{{anagram}}
+
+			<table>
+				<tr>
+					<th>keep</th>
+					<th>Anagram</th>
+				</tr>
+
+				<tr ng-repeat = "x in results">
+					<td><input type="checkbox"/></td>
+					<td>{{x}}</td>
+				</tr>
+			</table>
     </div>
 
     <br />
-
+<!-- 
     <div ng-controller="anagramTable">
     	<button>sort</button>
-    	<input ng-model="wordFilter" />
     	<button>filter results</button>
 			<table>
 				<tr>
@@ -31,7 +42,7 @@
 				</tr>
 			</table>
   		{{results}}
-    </div>
+    </div> -->
     <body />
     <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="./app.js"></script>
