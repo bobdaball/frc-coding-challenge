@@ -8,21 +8,25 @@ mainCtrl.controller("mainController", ($scope) => {
 	$scope.wordStock = new Set();
 	$scope.numPerm = 0;
 	$scope.tableView = false;
-	$scope.resultKeepers = Array(10).fill(false);
+	$scope.checkedNumbers = 0;
+	$scope.resultKeepers = {
+		0 : false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false
+	};
 //keep track of resultKeepStatus
-//if false,  
 
 	$scope.$watch('validWord', (newValue, oldValue) => {
 		//check if total number of unique permutations are greater than 10
 		// if so, use findAnagrmas();
 		// console.log($scope.wordStock.size);
-		$scope.validWord === '' ? $scope.tableView = false : $scope.tableView = true;
-		$scope.fillTable();	
-		$scope.anagram = $scope.shuffleString($scope.validWord);
+		$scope.tableReset();
 	})
 
 	$scope.init = () => {
 		$scope.resetResultKeepers();
+	}
+
+	$scope.trackChecked = (indexValue) => {
+		$scope.resultKeepers[indexValue] ? $scope.checkedNumbers++ : $scope.checkedNumbers--;
 	}
 
 	$scope.resetResultKeepers = () => {
@@ -31,13 +35,16 @@ mainCtrl.controller("mainController", ($scope) => {
 		}
 	}
 
-	$scope.toggleCheck = (num) => {
-		console.log($scope.resultKeepers, 'resultkeepers');
+	$scope.tableReset = () => {
+		$scope.validWord === '' ? $scope.tableView = false : $scope.tableView = true;
+		$scope.fillTable();	
+		$scope.anagram = $scope.shuffleString($scope.validWord);
 	}
+
+
 	$scope.fillTable = () => {
 		$scope.numPerm = $scope.countAllUniquePermutations($scope.validWord);
-		$scope.wordStock = new Set();
-
+		$scope.adjustKeepers();
 
 		if ($scope.numPerm > 10) {
 			while($scope.wordStock.size < 10) {
@@ -47,12 +54,25 @@ mainCtrl.controller("mainController", ($scope) => {
 			$scope.results = [...$scope.wordStock];
 			console.log($scope.wordStock);
 		} else if ($scope.numPerm <= 10 && $scope.numPerm > 0) {
-			while($scope.wordStock.size < $scope.numPerm) {
+			let limit = $scope.numPerm;
+			// limit + $scope.checkedNumbers >= 10 ? limit = 10 : limit = $scope.checkedNumbers + limit - 1;
+
+			while($scope.wordStock.size < limit) {
 				let gibberish = $scope.shuffleString($scope.validWord);
 				$scope.wordStock.add(gibberish);
 			} 
 			$scope.results = [...$scope.wordStock];
 			console.log($scope.wordStock);
+		}
+	}
+
+	$scope.adjustKeepers = () => {
+		console.log('I am called');
+		for (let i = 0; i < 10; i++) {
+			if ($scope.resultKeepers[i] === false) {
+				console.log('it is happening');
+				$scope.wordStock.delete($scope.results[i]);
+			}
 		}
 	}
 

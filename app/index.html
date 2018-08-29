@@ -8,7 +8,7 @@
     <div ng-controller="mainController" ng-init="init()">
 
 	   	<input ng-model="validWord" />
-	   	<button ng-click="findAnagrams()">click me</button>
+	   	<button ng-click="tableReset()">click me</button>
     	<br />		
 	   	{{anagram}}
 	   	<div ng-show="tableView">
@@ -19,34 +19,15 @@
 					</tr>
 
 					<tr ng-repeat = "x in results">
-						<td><input type="checkbox" ng-model = "resultKeepers[$index]" ng-change="toggleCheck($index)"/></td>
+						<td><input type="checkbox" ng-model = "resultKeepers[$index]" ng-Change="trackChecked($index)"/></td>
 						<td>{{x}}</td>
-						<td>{{$index}}</td>
 					</tr>
 				</table>
 			</div>
     </div>
 
     <br />
-<!-- 
-    <div ng-controller="anagramTable">
-    	<button>sort</button>
-    	<button>filter results</button>
-			<table>
-				<tr>
-					<th>keep</th>
-					<th>Anagram</th>
-				</tr>
-
-				<tr ng-repeat = "x in results">
-					<td><input type="checkbox"/></td>
-					<td>{{x}}</td>
-				</tr>
-			</table>
-  		{{results}}
-    </div> -->
     <body />
     <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="./app.js"></script>
-    <!-- <script type="text/javascript" src="./components/anagramTable/anaTableController.js"></script> -->
 </html>
