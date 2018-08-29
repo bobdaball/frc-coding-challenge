@@ -5,7 +5,7 @@
         <title>Angular Example</title>
     </head>
     <body> 
-    <div ng-controller="mainController">
+    <div ng-controller="mainController" ng-init="init()">
 
 	   	<input ng-model="validWord" />
 	   	<button ng-click="findAnagrams()">click me</button>

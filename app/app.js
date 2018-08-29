@@ -8,21 +8,27 @@ mainCtrl.controller("mainController", ($scope) => {
 	$scope.wordStock = new Set();
 	$scope.numPerm = 0;
 	$scope.tableView = false;
+	$scope.resultKeepers = new Set();
 
 	$scope.$watch('validWord', (newValue, oldValue) => {
 		//check if total number of unique permutations are greater than 10
 		// if so, use findAnagrmas();
 		// console.log($scope.wordStock.size);
+		// console.log($scope.resultKeepers, 'scope resultKeepers');
 		$scope.validWord === '' ? $scope.tableView = false : $scope.tableView = true;
 		$scope.fillTable();	
 		$scope.anagram = $scope.shuffleString($scope.validWord);
 	})
-	//previous word is necessary to see if word has changed.
 
-	// $scope.checkValidity = (word) => {
-	// 	let bool = wordChecker[word];
-	// 	return bool === undefined ? false : true;
-	// }
+	$scope.init = () => {
+		for (let i = 0; i < 10; i++) {
+			$scope.resultKeepers.add(i);
+		}
+	}
+
+	$scope.resetResultKeepers = () => {
+
+	}
 
 	$scope.fillTable = () => {
 		$scope.numPerm = $scope.countAllUniquePermutations($scope.validWord);
@@ -64,9 +70,6 @@ mainCtrl.controller("mainController", ($scope) => {
 		for(let x = 0; x < 36; x++) {
 			totalProduct *= $scope.factorial(frequency[x]);
 		}
-		// console.log(frequency);
-		// console.log(totalProduct);
-		// console.log(size,'size',factorial(size), 'factorial Size');
 		let num = $scope.factorial(size);
 
 		return num / totalProduct;
@@ -83,8 +86,6 @@ mainCtrl.controller("mainController", ($scope) => {
 
 
 	$scope.findAnagrams = () => {
-		// how to make anagram
-		// shuffle string
 		$scope.anagram = $scope.shuffleString($scope.validWord);
 	}
 
