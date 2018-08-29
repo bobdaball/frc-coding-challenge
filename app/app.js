@@ -51,7 +51,7 @@ mainCtrl.controller("mainController", ($scope) => {
 				$scope.wordStock.add(gibberish);
 			} 
 			$scope.results = [...$scope.wordStock];
-			console.log($scope.wordStock);
+			// console.log($scope.wordStock);
 		} else if ($scope.numPerm <= 10 && $scope.numPerm > 0) {
 			let limit = $scope.numPerm;
 			// limit + $scope.checkedNumbers >= 10 ? limit = 10 : limit = $scope.checkedNumbers + limit - 1;
@@ -61,15 +61,13 @@ mainCtrl.controller("mainController", ($scope) => {
 				$scope.wordStock.add(gibberish);
 			} 
 			$scope.results = [...$scope.wordStock];
-			console.log($scope.wordStock);
+			// console.log($scope.wordStock);
 		}
 	}
 
 	$scope.adjustKeepers = () => {
-		console.log('I am called');
 		for (let i = 0; i < 10; i++) {
 			if ($scope.resultKeepers[i] === false) {
-				console.log('it is happening');
 				$scope.wordStock.delete($scope.results[i]);
 			}
 		}
