@@ -3,7 +3,6 @@ var mainCtrl = angular.module("App",[]);
 
 mainCtrl.controller("mainController", ($scope) => {
 	$scope.validWord = "";
-	$scope.anagram = "";
 	$scope.results = [];
 	$scope.wordStock = new Set();
 	$scope.numPerm = 0;
@@ -106,11 +105,6 @@ mainCtrl.controller("mainController", ($scope) => {
 			product *= i;
 		}
 		return product;
-	}
-
-
-	$scope.findAnagrams = () => {
-		$scope.anagram = $scope.shuffleString($scope.validWord);
 	}
 
 	$scope.shuffleString = (stringInput) => {
