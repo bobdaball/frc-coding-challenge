@@ -12,8 +12,19 @@ mainCtrl.controller("mainController", ($scope) => {
 		//check if total number of unique permutations are greater than 10
 		// if so, use findAnagrmas();
 		// console.log($scope.wordStock.size);
+		$scope.fillTable();	
+		$scope.anagram = $scope.shuffleString($scope.validWord);
+	})
+	//previous word is necessary to see if word has changed.
+
+	// $scope.checkValidity = (word) => {
+	// 	let bool = wordChecker[word];
+	// 	return bool === undefined ? false : true;
+	// }
+
+	$scope.fillTable = () => {
 		$scope.numPerm = $scope.countAllUniquePermutations($scope.validWord);
-	// ?	console.log($scope.numPerm, 'num perm');
+	
 		if ($scope.numPerm > 10) {
 			$scope.wordStock = new Set();
 			while($scope.wordStock.size < 10) {
@@ -31,21 +42,8 @@ mainCtrl.controller("mainController", ($scope) => {
 			$scope.results = [...$scope.wordStock];
 			console.log($scope.wordStock);
 		}
-		// else {
-		$scope.anagram = $scope.shuffleString($scope.validWord);
-		// }
-	})
-	//previous word is necessary to see if word has changed.
-
-	// $scope.checkValidity = (word) => {
-	// 	let bool = wordChecker[word];
-	// 	return bool === undefined ? false : true;
-	// }
-
-	$scope.fillTable = () => {
-
 	}
-	
+
 	$scope.countAllUniquePermutations = (string) => {
 		let chars = string.toLowerCase();
 		let size = string.length;
